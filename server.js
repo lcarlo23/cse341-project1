@@ -1,15 +1,24 @@
 import { loadEnvFile } from 'process';
 import express from 'express';
+import { closeDb, initDb } from './src/controllers/databaseController.js';
+import contacts from './src/routes/contacts.js';
 
 loadEnvFile();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.get('/', (req, res) => {
-    res.send('Hello World');
-})
+app.use('/', contacts);
 
-app.listen(port, () => {
-    console.log(`Web server listening on port ${port}`);
-})
+try {
+    initDb();
+
+    app.listen(port, () => {
+        console.log(`Web server listening on port ${port}`);
+    })
+} catch (error) {
+    console.error(error);
+}
+
+process.on('SIGINT', closeDb);
+process.on('SIGTERM', closeDb);
