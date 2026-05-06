@@ -1,0 +1,23 @@
+{
+  "name": "cse341-project1",
+  "version": "1.0.0",
+  "description": "CSE341 Contacts Project",
+  "homepage": "https://github.com/lcarlo23/cse341-project1#readme",
+  "bugs": {
+    "url": "https://github.com/lcarlo23/cse341-project1/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lcarlo23/cse341-project1.git"
+  },
+  "license": "ISC",
+  "author": "Luca Carlo",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
