@@ -1,11 +1,11 @@
 import { ObjectId } from "mongodb";
-import { getAllContacts, getSingleContact } from "../models/contactsModel.js";
+import { findAllContacts, findOneContact } from "../models/contactsModel.js";
 import { getDb } from "./databaseController.js";
 
-export async function getContactsList(req, res) {
+export async function getAllContacts(req, res) {
     try {
         const db = await getDb();
-        const contacts = await getAllContacts(db);
+        const contacts = await findAllContacts(db);
 
         res.json(contacts);
     } catch (error) {
@@ -18,7 +18,7 @@ export async function getContact(req, res) {
 
     try {
         const db = await getDb();
-        const contact = await getSingleContact(db, id);
+        const contact = await findOneContact(db, id);
 
         res.json(contact);
     } catch (error) {
