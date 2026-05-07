@@ -6,7 +6,7 @@ import {
 
 const router = Router();
 
-router.get("/contacts", getAllContacts);
-router.get("/contacts/:id", getContact);
+router.get("/", getAllContacts);
+router.get("/:id", getContact);
 
 export default router;

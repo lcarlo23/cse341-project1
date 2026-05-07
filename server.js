@@ -1,11 +1,11 @@
 import express from "express";
 import { closeDb, initDb } from "./src/controllers/databaseController.js";
-import contacts from "./src/routes/contacts.js";
+import contactsRoute from "./src/routes/contactsRoute.js";
 
 const server = express();
 const port = process.env.PORT || 8080;
 
-server.use("/", contacts);
+server.use("/contacts", contactsRoute);
 
 try {
   initDb();
