@@ -1,0 +1,17 @@
+// DEVELOPMENT
+
+### Get all contacts
+GET http://localhost:8080/contacts
+
+### Get contact by id
+GET http://localhost:8080/contacts/69fb6296b1c1dd4444ae9bac
+
+
+// PRODUCTION
+
+### Get all contacts
+GET https://cse341-project1-t3pw.onrender.com/contacts
+
+
+### Get contact by id
+GET https://cse341-project1-t3pw.onrender.com/contacts/69fb6296b1c1dd4444ae9bac
