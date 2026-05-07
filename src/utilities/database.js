@@ -28,7 +28,10 @@ export async function getDb() {
 }
 
 export async function closeDb() {
-  await client.close();
-  console.log("MongoDB connection closed.");
+  if (db) {
+    await client.close();
+    console.log("MongoDB connection closed.");
+  }
+
   process.exit(0);
 }
