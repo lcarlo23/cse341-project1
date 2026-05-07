@@ -1,5 +1,5 @@
 import express from "express";
-import { closeDb, initDb } from "./src/controllers/databaseController.js";
+import { closeDb, initDb } from "./src/utilities/database.js";
 import contactsRoute from "./src/routes/contactsRoute.js";
 
 const server = express();

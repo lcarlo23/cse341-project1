@@ -1,6 +1,6 @@
 import { ObjectId } from "mongodb";
 import { findAllContacts, findOneContact } from "../models/contactsModel.js";
-import { getDb } from "./databaseController.js";
+import { getDb } from "../utilities/database.js";
 
 export async function getAllContacts(req, res) {
   try {
@@ -9,7 +9,7 @@ export async function getAllContacts(req, res) {
 
     res.status(200).json(contacts);
   } catch (error) {
-    res.send(error);
+    res.status(500).send(error);
   }
 }
 
