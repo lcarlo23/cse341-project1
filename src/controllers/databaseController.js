@@ -1,16 +1,15 @@
 import { MongoClient } from 'mongodb';
-import { loadEnvFile } from 'process';
 
-if (process.loadEnvFile) {
-    loadEnvFile();
-};
-
-const uri = process.env.MONGODB_URI;
-const client = new MongoClient(uri);
+let uri;
+let client;
 let db;
 let collection;
 
 export async function initDb() {
+
+    uri = process.env.MONGODB_URI;
+    client = new MongoClient(uri);
+
     try {
         await client.connect();
         db = client.db('cse341');
