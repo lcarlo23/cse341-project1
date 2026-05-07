@@ -3,26 +3,24 @@ import { findAllContacts, findOneContact } from "../models/contactsModel.js";
 import { getDb } from "./databaseController.js";
 
 export async function getAllContacts(req, res) {
-    try {
-        const db = await getDb();
-        const contacts = await findAllContacts(db);
+  try {
+    const db = await getDb();
+    const contacts = await findAllContacts(db);
 
-        res.json(contacts);
-    } catch (error) {
-        console.error(error);
-    }
+    res.status(200).json(contacts);
+  } catch (error) {
+    res.send(error);
+  }
 }
 
 export async function getContact(req, res) {
+  try {
     const id = new ObjectId(req.params.id);
+    const db = await getDb();
+    const contact = await findOneContact(db, id);
 
-    try {
-        const db = await getDb();
-        const contact = await findOneContact(db, id);
-
-        res.json(contact);
-    } catch (error) {
-        console.error(error);
-    }
-
+    res.status(200).json(contact);
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
 }

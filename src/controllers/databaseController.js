@@ -1,34 +1,34 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient } from "mongodb";
 
-let uri;
-let client;
 let db;
-let collection;
+let client;
 
 export async function initDb() {
+  if (db) {
+    console.log("DB already initialized!");
+    return;
+  }
 
-    uri = process.env.MONGODB_URI;
-    client = new MongoClient(uri);
+  client = new MongoClient(process.env.MONGODB_URI);
 
-    try {
-        await client.connect();
-        db = client.db('cse341');
-        collection = db.collection('contacts');
-    } catch (error) {
-        console.error(error);
-    }
+  try {
+    await client.connect();
+    db = client.db("cse341");
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 export async function getDb() {
-    if (!db) {
-        throw Error("Database not initialized");
-    }
+  if (!db) {
+    throw new Error("Database not initialized");
+  }
 
-    return db;
+  return db;
 }
 
 export async function closeDb() {
-    await client.close();
-    console.log('MongoDB connection closed.');
-    process.exit(0);
+  await client.close();
+  console.log("MongoDB connection closed.");
+  process.exit(0);
 }
