@@ -18,6 +18,18 @@ Content-Type: application/json
   "birthday": "1992-03-15"
 }
 
+### Update contact
+PUT http://localhost:8080/contacts/6a02f0c545f2836297d8aeae
+Content-Type: application/json
+
+{
+  "firstName": "Luigi",
+  "lastName": "Bianchi",
+  "email": "luigi.bianchi@example.com",
+  "favoriteColor": "Blue",
+  "birthday": "1992-03-15"
+}
+
 // PRODUCTION
 
 ### Get all contacts

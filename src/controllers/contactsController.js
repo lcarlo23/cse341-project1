@@ -3,6 +3,7 @@ import {
   findAllContacts,
   findOneContact,
   insertContact,
+  replaceContact,
 } from '../models/contactsModel.js';
 
 export async function getAllContacts(req, res) {
@@ -36,10 +37,30 @@ export async function createContact(req, res) {
       birthday: req.body.birthday,
     };
 
-    await insertContact(contact);
+    const result = await insertContact(contact);
 
-    res.status(204).send();
+    res.status(201).send(result.insertedId);
   } catch (error) {
-    res.status(error.status).send(error.message);
+    res.status(500).send(error.message);
+  }
+}
+
+export async function updateContact(req, res) {
+  try {
+    const id = new ObjectId(req.params.id);
+
+    const contact = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      favoriteColor: req.body.favoriteColor,
+      birthday: req.body.birthday,
+    };
+
+    const result = await replaceContact(id, contact);
+
+    res.status(200).send(result);
+  } catch (error) {
+    res.status(500).send(error.message);
   }
 }

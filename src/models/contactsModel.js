@@ -31,3 +31,10 @@ export async function insertContact(contact) {
 
   return result;
 }
+
+export async function replaceContact(id, contact) {
+  const collection = await getCollection();
+  const result = await collection.replaceOne({ _id: id }, contact);
+
+  return result;
+}
