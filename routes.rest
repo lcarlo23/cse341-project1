@@ -19,7 +19,7 @@ Content-Type: application/json
 }
 
 ### Update contact
-PUT http://localhost:8080/contacts/6a02f0c545f2836297d8aeae
+PUT http://localhost:8080/contacts/6a02f74e5c7dd08610764c6e
 Content-Type: application/json
 
 {
@@ -29,6 +29,10 @@ Content-Type: application/json
   "favoriteColor": "Blue",
   "birthday": "1992-03-15"
 }
+
+### Delete contact
+DELETE http://localhost:8080/contacts/6a02f74e5c7dd08610764c6e
+
 
 // PRODUCTION
 

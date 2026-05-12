@@ -1,5 +1,6 @@
 import { ObjectId } from 'mongodb';
 import {
+  deleteOneContact,
   findAllContacts,
   findOneContact,
   insertContact,
@@ -58,6 +59,18 @@ export async function updateContact(req, res) {
     };
 
     const result = await replaceContact(id, contact);
+
+    res.status(200).send(result);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+}
+
+export async function deleteContact(req, res) {
+  try {
+    const id = new ObjectId(req.params.id);
+
+    const result = await deleteOneContact(id);
 
     res.status(200).send(result);
   } catch (error) {

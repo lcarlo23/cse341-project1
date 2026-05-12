@@ -38,3 +38,10 @@ export async function replaceContact(id, contact) {
 
   return result;
 }
+
+export async function deleteOneContact(id) {
+  const collection = await getCollection();
+  const result = await collection.deleteOne({ _id: id });
+
+  return result;
+}
