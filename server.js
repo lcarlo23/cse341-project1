@@ -1,11 +1,14 @@
-import express from "express";
-import { closeDb, initDb } from "./src/utilities/database.js";
-import contactsRoute from "./src/routes/contactsRoute.js";
+import express from 'express';
+import { closeDb, initDb } from './src/utilities/database.js';
+import contactsRoute from './src/routes/contactsRoute.js';
+import bodyParser from 'body-parser';
 
 const server = express();
 const port = process.env.PORT || 8080;
 
-server.use("/contacts", contactsRoute);
+server.use(bodyParser.json());
+
+server.use('/contacts', contactsRoute);
 
 try {
   initDb();
@@ -17,5 +20,5 @@ try {
   console.error(error);
 }
 
-process.on("SIGINT", closeDb);
-process.on("SIGTERM", closeDb);
+process.on('SIGINT', closeDb);
+process.on('SIGTERM', closeDb);

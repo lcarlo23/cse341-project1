@@ -1,11 +1,13 @@
-import { ObjectId } from "mongodb";
-import { findAllContacts, findOneContact } from "../models/contactsModel.js";
-import { getDb } from "../utilities/database.js";
+import { ObjectId } from 'mongodb';
+import {
+  findAllContacts,
+  findOneContact,
+  insertContact,
+} from '../models/contactsModel.js';
 
 export async function getAllContacts(req, res) {
   try {
-    const db = await getDb();
-    const contacts = await findAllContacts(db);
+    const contacts = await findAllContacts();
 
     res.status(200).json(contacts);
   } catch (error) {
@@ -16,11 +18,28 @@ export async function getAllContacts(req, res) {
 export async function getContact(req, res) {
   try {
     const id = new ObjectId(req.params.id);
-    const db = await getDb();
-    const contact = await findOneContact(db, id);
+    const contact = await findOneContact(id);
 
     res.status(200).json(contact);
   } catch (error) {
     res.status(404).send(error.message);
+  }
+}
+
+export async function createContact(req, res) {
+  try {
+    const contact = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      favoriteColor: req.body.favoriteColor,
+      birthday: req.body.birthday,
+    };
+
+    await insertContact(contact);
+
+    res.status(204).send();
+  } catch (error) {
+    res.status(error.status).send(error.message);
   }
 }

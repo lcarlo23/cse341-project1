@@ -22,6 +22,7 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "body-parser": "^2.2.2",
     "express": "^5.2.1",
     "mongodb": "^7.2.0"
   },

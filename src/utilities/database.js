@@ -1,11 +1,11 @@
-import { MongoClient } from "mongodb";
+import { MongoClient } from 'mongodb';
 
 let db;
 let client;
 
 export async function initDb() {
   if (db) {
-    console.log("DB already initialized!");
+    console.log('DB already initialized!');
     return;
   }
 
@@ -13,7 +13,7 @@ export async function initDb() {
 
   try {
     await client.connect();
-    db = client.db("cse341");
+    db = client.db('cse341');
   } catch (error) {
     console.error(error);
   }
@@ -21,7 +21,7 @@ export async function initDb() {
 
 export async function getDb() {
   if (!db) {
-    throw new Error("Database not initialized");
+    throw new Error('Database not initialized');
   }
 
   return db;
@@ -30,7 +30,7 @@ export async function getDb() {
 export async function closeDb() {
   if (db) {
     await client.close();
-    console.log("MongoDB connection closed.");
+    console.log('MongoDB connection closed.');
   }
 
   process.exit(0);
