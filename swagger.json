@@ -5,9 +5,9 @@
     "description": "A Node.js REST API integrated with MongoDB for managing a contacts database. It supports full CRUD operations allowing users to create, read, update, and delete contact details such as names, emails, favorite colors, and birthdays.",
     "version": "1.0.0"
   },
-  "host": "https://cse341-project1-t3pw.onrender.com",
+  "host": "cse341-project1-t3pw.onrender.com",
   "basePath": "/",
-  "schemes": ["http"],
+  "schemes": ["https"],
   "paths": {
     "/contacts/": {
       "get": {
