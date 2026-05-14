@@ -1,0 +1,146 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Contacts API",
+    "description": "A Node.js REST API integrated with MongoDB for managing a contacts database. It supports full CRUD operations allowing users to create, read, update, and delete contact details such as names, emails, favorite colors, and birthdays.",
+    "version": "1.0.0"
+  },
+  "host": "https://cse341-project1-t3pw.onrender.com/",
+  "basePath": "/",
+  "schemes": ["http"],
+  "paths": {
+    "/contacts/": {
+      "get": {
+        "description": "Retrieve all contacts from the database.",
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved the list of contacts."
+          },
+          "500": {
+            "description": "Internal Server Error."
+          }
+        }
+      },
+      "post": {
+        "description": "Create a new contact in the database.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "John"
+                },
+                "lastName": {
+                  "example": "Doe"
+                },
+                "email": {
+                  "example": "johndoe@example.com"
+                },
+                "favoriteColor": {
+                  "example": "Blue"
+                },
+                "birthday": {
+                  "example": "1990-01-01"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Contact successfully created."
+          },
+          "500": {
+            "description": "Internal Server Error."
+          }
+        }
+      }
+    },
+    "/contacts/{id}": {
+      "get": {
+        "description": "Get a single contact by its unique ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved the contact details."
+          },
+          "404": {
+            "description": "Contact not found."
+          }
+        }
+      },
+      "put": {
+        "description": "Update an existing contact identified by ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "John"
+                },
+                "lastName": {
+                  "example": "Smith"
+                },
+                "email": {
+                  "example": "johnsmith@example.com"
+                },
+                "favoriteColor": {
+                  "example": "Green"
+                },
+                "birthday": {
+                  "example": "1990-01-01"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Contact successfully updated."
+          },
+          "500": {
+            "description": "Internal Server Error."
+          }
+        }
+      },
+      "delete": {
+        "description": "Remove a contact from the database by ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Contact successfully deleted."
+          },
+          "500": {
+            "description": "Internal Server Error."
+          }
+        }
+      }
+    }
+  }
+}
