@@ -6,7 +6,7 @@ const doc = {
     description:
       'A Node.js REST API integrated with MongoDB for managing a contacts database. It supports full CRUD operations allowing users to create, read, update, and delete contact details such as names, emails, favorite colors, and birthdays.',
   },
-  host: 'https://cse341-project1-t3pw.onrender.com/',
+  host: 'https://cse341-project1-t3pw.onrender.com',
 };
 
 const outputFile = './swagger.json';
